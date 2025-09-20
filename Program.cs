@@ -21,8 +21,9 @@ class Program
             {
                 customer.userLoggedIn = true;
                 customer.userPinTries = 0;
-                Console.WriteLine("Welcome!");
-                Console.WriteLine("");
+
+                Console.WriteLine($"Welcome, {person.Name}!");
+                Console.Write("GO TO MENU =>");
                 Console.ReadLine();
                 break;
             }
@@ -41,7 +42,7 @@ class Program
 
             }
         }
-        
+
         //Menu
         while (customer.userLoggedIn)
         {
@@ -93,7 +94,7 @@ class Program
                                     Console.WriteLine("It has to be more than 0");
                                 }
                                 else
-                                account.Withdraw(amount);
+                                    account.Withdraw(amount);
                                 Console.WriteLine($"You successfully withdraw: {amount} kr");
                                 Console.WriteLine($"You got {account.Balance} kr");
                                 Console.Write("GO TO MENU =>");
@@ -110,12 +111,26 @@ class Program
                             Console.ReadLine();
                         }
                         break;
-                    default:
+                    case 4:
                         {
                             customer.userLoggedIn = false;
-                            return;
+                            Console.Clear();
+                            Console.WriteLine("You are logged out");
+                            Console.ReadLine();
+                        }
+                        return;
+                    default:
+                        {
+                            Console.WriteLine("Wrong input, try again!");
+                            Console.ReadLine();
+                            break;
                         }
                 }
+            }
+            else
+            {
+                Console.WriteLine("Wrong input, try again!");
+                Console.ReadLine();
             }
         }
       }
