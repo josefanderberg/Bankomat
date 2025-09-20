@@ -15,12 +15,14 @@ class Program
             Console.Clear();
             Console.WriteLine("===== ATM =====");
             Console.WriteLine("Enter your pin:");
+
             if (int.TryParse(Console.ReadLine(), out int tryPin)
             && customer.Auth(tryPin))
             {
                 customer.userLoggedIn = true;
                 customer.userPinTries = 0;
                 Console.WriteLine("Welcome!");
+                Console.WriteLine("");
                 Console.ReadLine();
                 break;
             }
@@ -56,26 +58,56 @@ class Program
                 {
                     case 1:
                         {
-                            if (int.TryParse(Console.ReadLine(), out int amount)
-                            && amount >= 0)
+                            Console.Clear();
+                            Console.WriteLine("==== DEPOSIT ====");
+                            Console.Write("VALUE: ");
+
+                            if (int.TryParse(Console.ReadLine(), out int amount))
                             {
+                                if (amount <= 0)
+                                {
+                                    Console.WriteLine("It has to be more than 0");
+                                }
                                 account.Deposit(amount);
+                                Console.WriteLine($"You successfully deposit: {amount} kr");
+                                Console.WriteLine($"You got {account.Balance} kr");
+                                Console.Write("GO TO MENU =>");
+                                Console.ReadLine();
                             }
 
                         }
                         break;
                     case 2:
                         {
-                            if (int.TryParse(Console.ReadLine(), out int amount)
-                            && amount > 0)
+                            Console.Clear();
+                            Console.WriteLine("=== WITHDRAW ===");
+                            Console.Write("> ");
+                            if (int.TryParse(Console.ReadLine(), out int amount))
                             {
+                                if (amount > account.Balance)
+                                {
+                                    Console.WriteLine("You don't have enough money");
+                                }
+                                else if (amount <= 0)
+                                {
+                                    Console.WriteLine("It has to be more than 0");
+                                }
+                                else
                                 account.Withdraw(amount);
+                                Console.WriteLine($"You successfully withdraw: {amount} kr");
+                                Console.WriteLine($"You got {account.Balance} kr");
+                                Console.Write("GO TO MENU =>");
+                                Console.ReadLine();
                             }
                         }
                         break;
                     case 3:
                         {
-                            Console.WriteLine($"You got: {account.ShowSaldo()}");
+                            Console.Clear();
+                            Console.WriteLine("=== SHOW SALDO ===");
+                            Console.WriteLine($"You got: {account.Balance} kr");
+                            Console.Write("GO TO MENU =>");
+                            Console.ReadLine();
                         }
                         break;
                     default:

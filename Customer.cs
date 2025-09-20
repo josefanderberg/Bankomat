@@ -1,10 +1,10 @@
 class Customer
 {
 
-    private readonly int pin;
+    private readonly int _pin;
     public int Pin
     {
-        get { return pin; }
+        get { return _pin; }
     }
 
     public int userPinTries = 0;
@@ -14,12 +14,12 @@ class Customer
 
     public Customer(int Pin)
     {
-        pin = Pin;
+        _pin = Pin;
     }
 
 
     public bool Auth(int tryPin)
     {
-        return pin == tryPin;
+        return _pin == tryPin;
     }
 }

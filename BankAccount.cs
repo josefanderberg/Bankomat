@@ -1,23 +1,23 @@
 class BankAccount
 {
-private int balance;
-public int Balance
-{
-    get => balance;
-    set => balance = value;
-}
+    private int _balance;
+    public int Balance
+    {
+        get => _balance;
+        set => _balance = value;
+    }
 
 
-public int Deposit(int amount)
+    public int Deposit(int amount)
+        {
+        return Balance += amount;
+        }
+    public int Withdraw(int amount)
+        {
+        return Balance -= amount;
+        }
+    public int ShowSaldo()
     {
-    return balance += amount;
-    }
-public int Withdraw(int amount)
-    {
-    return balance -= amount;
-    }
-public int ShowSaldo()
-    {
-    return balance;
+        return Balance;
     }
 }
