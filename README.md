@@ -1,83 +1,54 @@
-🎯 Syfte
-Denna övning ger träning i:
 
-- Objektorienterad programmering (OOP) i C# (klasser, objekt, metoder, properties).
-- Inkapsling: skydda data med private fields och exponera dem via properties/metoder.
-- Kontrollstrukturer & input/output i en konsolapplikation.
-- Källkodshantering med Git (repo, commits, inlämning via Learnpoint).
+This project is a simple command-line ATM application written in C#.
 
-📚 Koppling till lärandemål i kursplanen Programmering grund
-- Kunskaper i att: förklara konstruktion av enkla program innehållande kontrollstrukturer.
-- Färdigheter i att: konstruera enkla program, hantera input/output, använda samlingsklasser.
-- Färdigheter i att: använda Git för enklare källkodshantering.
+Features
+The ATM application includes the following features:
 
-🧩 Kravspecifikation
+User Authentication: Users must enter a correct PIN to access their account.
 
-Funktionalitet
+Deposit: Users can deposit funds into their account.
 
--- Vid programstart: användaren måste ange en fyrsiffrig PIN-kod.
-- PIN jämförs mot en hårdkodad konstant i en Customer-klass.
--- När PIN är korrekt ska en meny visas med följande val:
-1. Sätt in pengar
-2. Ta ut pengar
-3. Visa saldo
-4. Avsluta
-Validering:
-- Uttag får inte överstiga saldo.
-- Belopp måste vara > 0 och numeriska.
+Withdrawal: Users can withdraw funds, but only if they have a sufficient balance.
 
-#OOP-struktur
+Balance Check: Users can view their current account balance.
 
-++ BankAccount
-- private decimal balance;
-- public decimal Balance { get; } (read-only property).
-- Deposit(amount), Withdraw(amount) med validering.
-++ Person
-- Namn och personnummer som readonly properties.
-Customer
-Kopplar Person + BankAccount + PIN.
-Authenticate(pin) → returnerar true/false.
+PIN Tries: The system blocks the user after three failed PIN attempts.
 
-Git-krav
-- Projektet ska versionshanteras med Git.
-- Minst 5 commits med beskrivande meddelanden.
-- Repo ska innehålla en README.md med:
-Kort beskrivning av projektet.
-Instruktioner för att köra (dotnet run).
-Beskrivning av OOP/inkapsling i projektet.
+Prerequisites
+To run this application, you need to have the following installed:
 
-Inlämning
-Länka till ditt GitHub-repo i Learnpoint-kommentaren.
+.NET SDK (version 6.0 or later)
 
-📘 Kodexempel (skelett)
-class BankAccount
-{
-    private decimal balance;
-    public decimal Balance => balance;
+Getting Started
+1. Clone the repository
+Bash
 
-    public void Deposit(decimal amount)
-    {
-        if (amount > 0) balance += amount;
-    }
+git clone <repository-url>
+2. Navigate to the project directory
+Bash
 
-    public void Withdraw(decimal amount)
-    {
-        if (amount > 0 && amount <= balance)
-            balance -= amount;
-    }
-}
+cd <project-directory>
+3. Run the application
+Bash
 
-Studenterna förväntas bygga ut Person, Customer och Program (ATM) själva utifrån kravspecifikationen.
+dotnet run
+Project Structure
+Program.cs: The main entry point of the application. It handles user input, menu navigation, and the core logic for the ATM's functionality.
 
-🏆 Bedömning
-Godkänt (G)
-Bankomat med PIN, meny och funktionerna insättning/uttag/saldo.
-Inkapsling används (private balance + property/metoder).
-Program körbart i konsolen.
-Git-repo med README och commit-historik.
+BankAccount.cs: Defines the BankAccount class, which manages the account balance and includes methods for depositing, withdrawing, and checking the balance.
 
-Väl godkänt (VG)
-Extra validering och felhantering.
-Kod uppdelad i flera klasser med tydlig struktur.
-README innehåller förklaring av inkapsling i egna ord.
-Git-logg visar logiska, välbeskrivna commits.
+Customer.cs: Defines the Customer class, which handles user authentication, PIN management, and login status.
+
+Person.cs: Defines the Person class, which holds personal information such as the user's name and personal ID.
+
+Customization
+Change the initial user data: You can modify the Main method in Program.cs to change the default user's name, personal ID, and PIN.
+
+C#
+
+// Example
+var person = new Person("Josef", "930323");
+var account = new BankAccount();
+var customer = new Customer(1234);
+License
+This project is licensed under the MIT License.

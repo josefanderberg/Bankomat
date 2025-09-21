@@ -63,19 +63,26 @@ class Program
                             Console.WriteLine("==== DEPOSIT ====");
                             Console.Write("VALUE: ");
 
-                            if (int.TryParse(Console.ReadLine(), out int amount))
+                            if (decimal.TryParse(Console.ReadLine(), out decimal amount))
                             {
                                 if (amount <= 0)
                                 {
                                     Console.WriteLine("It has to be more than 0");
                                 }
-                                account.Deposit(amount);
-                                Console.WriteLine($"You successfully deposit: {amount} kr");
-                                Console.WriteLine($"You got {account.Balance} kr");
-                                Console.Write("GO TO MENU =>");
+                                else
+                                {
+                                    account.Deposit(amount);
+                                    Console.WriteLine($"You successfully deposit: {amount:C2}} kr");
+                                    Console.WriteLine($"You got {account.Balance:C2} kr");
+                                    Console.Write("GO TO MENU =>");
+                                    Console.ReadLine();
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wrong input, try again!");
                                 Console.ReadLine();
                             }
-
                         }
                         break;
                     case 2:
@@ -83,7 +90,7 @@ class Program
                             Console.Clear();
                             Console.WriteLine("=== WITHDRAW ===");
                             Console.Write("> ");
-                            if (int.TryParse(Console.ReadLine(), out int amount))
+                            if (decimal.TryParse(Console.ReadLine(), out decimal amount))
                             {
                                 if (amount > account.Balance)
                                 {
@@ -94,10 +101,17 @@ class Program
                                     Console.WriteLine("It has to be more than 0");
                                 }
                                 else
+                                {
                                     account.Withdraw(amount);
-                                Console.WriteLine($"You successfully withdraw: {amount} kr");
-                                Console.WriteLine($"You got {account.Balance} kr");
-                                Console.Write("GO TO MENU =>");
+                                    Console.WriteLine($"You successfully withdraw: {amount:C2} kr");
+                                    Console.WriteLine($"You got {account.Balance:C2} kr");
+                                    Console.Write("GO TO MENU =>");
+                                    Console.ReadLine();
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wrong input, try again!");
                                 Console.ReadLine();
                             }
                         }
@@ -106,7 +120,7 @@ class Program
                         {
                             Console.Clear();
                             Console.WriteLine("=== SHOW SALDO ===");
-                            Console.WriteLine($"You got: {account.Balance} kr");
+                            Console.WriteLine($"You got: {account.Balance:C2} kr");
                             Console.Write("GO TO MENU =>");
                             Console.ReadLine();
                         }

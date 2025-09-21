@@ -1,22 +1,29 @@
 class BankAccount
 {
-    private int _balance;
-    public int Balance
+    private decimal _balance;
+    public decimal Balance
     {
-        get => _balance;
-        set => _balance = value;
+        get => _balance; 
     }
 
 
-    public int Deposit(int amount)
+public void Deposit(decimal amount)
+{
+    if (amount > 0)
+    {
+        _balance += amount;
+    }
+}
+    public bool Withdraw(decimal amount)
+    {
+        if (amount > 0 && amount <= _balance)
         {
-        return Balance += amount;
+            _balance -= amount;
+            return true; 
         }
-    public int Withdraw(int amount)
-        {
-        return Balance -= amount;
-        }
-    public int ShowSaldo()
+        return false; 
+    }
+    public decimal ShowSaldo()
     {
         return Balance;
     }
