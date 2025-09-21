@@ -1,6 +1,10 @@
 
 This project is a simple command-line ATM application written in C#.
 
+---
+I've used encapsulation to protect and control access to data. By making the _balance field in BankAccount.cs private, I've hide its internal state from the rest of the program.
+---
+
 Features
 The ATM application includes the following features:
 
